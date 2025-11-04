@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scholar Aid - Your Academic Research Partner</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        /* --- Global Styles --- */
+        :root {
+            --primary-color: #004a99;
+            --secondary-color: #f4f7f6;
+            --text-dark: #333;
+            --text-light: #fefefe;
+            --container-width: 1100px;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #fff;
+            color: var(--text-dark);
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        h1, h2, h3 {
+            line-height: 1.2;
+            margin-bottom: 15px;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        section {
+            padding: 60px 0;
+        }
+
+        .section-light {
+            background: var(--secondary-color);
+        }
+
+        /* --- NEW REFINED ICON CSS --- */
+        .icon {
+            font-size: 40px; /* Base icon size */
+            line-height: 1;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .why-card .icon {
+            font-size: 48px; /* Slightly larger for this section */
+        }
+
+
+        /* --- Navigation Bar --- */
+        .navbar {
+            background: #fff;
+            color: var(--text-dark);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #ddd;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        .navbar .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar ul li {
+            margin-left: 25px;
+        }
+
+        .navbar ul li a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .navbar ul li a:hover,
+        .navbar ul li a.active {
+            color: var(--primary-color);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            background: var(--secondary-color);
+            height: 60vh;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding-top: 80px; 
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--primary-color);
+            color: var(--text-light);
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: background 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #003366;
+        }
+
+        /* --- About Section --- */
+        #about p {
+            font-size: 1.1rem;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 30px auto;
+        }
+        
+        /* --- Why Choose Us Section --- */
+        .why-us-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+        
+        .why-card {
+            padding: 20px;
+        }
+        
+        .why-card h3 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        /* --- Services Section --- */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            padding: 30px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+        }
+        
+        .service-card h3 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .service-card p {
+            font-size: 1rem;
+        }
+        
+        /* --- Expertise Section --- */
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 25px;
+        }
+
+        .expertise-card {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            padding: 30px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .expertise-card:hover {
+             transform: translateY(-5px);
+        }
+        
+        .expertise-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+        
+        .expertise-card p {
+            font-size: 0.95rem;
+            color: #555;
+            line-height: 1.4;
+        }
+
+        /* --- Contact Section --- */
+        .contact-form {
+            max-width: 700px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .contact-form p {
+            text-align: center;
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #555;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box; 
+            font-size: 1rem;
+            font-family: inherit;
+        }
+        
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* --- Footer --- */
+        .footer {
+            background: var(--text-dark);
+            color: var(--text-light);
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        /* --- Responsive Design --- */
+        @media(max-width: 768px) {
+            .navbar .container {
+                flex-direction: column;
+            }
+            .navbar ul {
+                padding-top: 10px;
+            }
+            .hero {
+                height: auto;
+                padding: 100px 0 60px 0;
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            h2 {
+                font-size: 1.8rem;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" class="logo">Scholar Aid</a>
+            <ul>
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#expertise">Expertise</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="hero" id="home">
+        <div class="hero-content container">
+            <h1>Sucess Your Research Journey with Confidence</h1>
+            <p>We provide comprehensive guidance for PhD students and academic researchers. From experiment design to final publication, our expert team is here to ensure your success.</p>
+            <a href="#services" class="btn">View Our Services</a>
+        </div>
+    </header>
+
+    <section id="about">
+        <div class="container">
+            <h2>About Scholar Aid</h2>
+            <p>
+                At Scholar Aid, we understand the immense pressure and complex challenges faced by PhD candidates and researchers. We are a dedicated team of veteran researchers and faculty members with **over 11 years of combined experience in both academic and industrial research.**
+                <br><br>
+                Our mission is to provide one-on-one support to help you navigate every stage of your academic journey. We bridge the gap between complex theory and practical application, bringing real-world expertise to solve your specific problems.
+            </p>
+        </div>
+    </section>
+    
+    <section id="why-us" class="section-light">
+        <div class="container">
+            <h2>Why Choose Us?</h2>
+            <div class="why-us-grid">
+                <div class="why-card">
+                    <i class="icon fa-solid fa-users-gear"></i>
+                    <h3>Veteran Team</h3>
+                    <p>Our mentors are all experienced researchers and faculty members from diverse academic backgrounds.</p>
+                </div>
+                <div class="why-card">
+                    <i class="icon fa-solid fa-award"></i>
+                    <h3>11+ Years Experience</h3>
+                    <p>We leverage over a decade of hands-on academic and industrial research to provide practical, effective solutions.</p>
+                </div>
+                <div class="why-card">
+                    <i class="icon fa-solid fa-book-open-reader"></i>
+                    <h3>Comprehensive Support</h3>
+                    <p>From brainstorming and experiment design to final thesis defense and publication, we cover every step.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services">
+        <div class="container">
+            <h2>Our Services</h2>
+            <div class="services-grid">
+                
+                <div class="service-card">
+                    <i class="icon fa-solid fa-clipboard-list"></i>
+                    <h3>Experiment SOPs</h3>
+                    <p>Develop clear, detailed, and repeatable Standard Operating Procedures for all your lab experiments and data collection.</p>
+                </div>
+
+                <div class="service-card">
+                    <i class="icon fa-solid fa-chart-line"></i>
+                    <h3>Progress Reports</h3>
+                    <p>Craft concise and impactful progress reports for your committee, supervisors, or funding agencies.</p>
+                </div>
+
+                <div class="service-card">
+                    <i class="icon fa-solid fa-graduation-cap"></i>
+                    <h3>Synopsis & Thesis</h3>
+                    <p>Guidance on structuring, writing, and formatting your synopsis and final thesis for a compelling submission.</p>
+                </div>
+
+                <div class="service-card">
+                    <i class="icon fa-solid fa-file-arrow-up"></i>
+                    <h3>Paper Publication</h3>
+                    <p>Support through the entire publication process: journal selection, manuscript writing, and navigating peer-review.</p>
+                </div>
+
+                <div class="service-card">
+                    <i class="icon fa-solid fa-magnifying-glass"></i>
+                    <h3>Literature Review</h3>
+                    <p>Assistance in conducting thorough literature reviews and synthesizing complex information to build a strong foundation.</p>
+                </div>
+                
+                <div class="service-card">
+                    <i class="icon fa-solid fa-chart-pie"></i>
+                    <h3>Data Analysis Support</h3>
+                    <p>Consultation on statistical methods, data visualization, and interpreting your results effectively.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="expertise" class="section-light">
+        <div class="container">
+            <h2>Our Expertise</h2>
+            <div class="expertise-grid">
+                
+                <div class="expertise-card">
+                    <i class="icon fa-solid fa-atom"></i>
+                    <h3>Physics</h3>
+                    <p>Quantum Mechanics, Astrophysics, Computational Modeling, & Material Science.</p>
+                </div>
+
+                <div class="expertise-card">
+                    <i class="icon fa-solid fa-flask-vial"></i>
+                    <h3>Chemistry</h3>
+                    <p>Organic Synthesis, Physical Chemistry, Analytical Methods, & Nanotechnology.</p>
+                </div>
+                
+                <div class="expertise-card">
+                    <i class="icon fa-solid fa-dna"></i>
+                    <h3>Biology</h3>
+                    <p>Molecular Biology, Genetics, Ecology, & Bioinformatics.</p>
+                </div>
+                
+                <div class="expertise-card">
+                    <i class="icon fa-solid fa-calculator"></i>
+                    <h3>Mathematics</h3>
+                    <p>Statistical Analysis, Abstract Algebra, Differential Equations, & Data Modeling.</p>
+                </div>
+                
+                <div class="expertise-card">
+                    <i class="icon fa-solid fa-people-group"></i>
+                    <h3>Social Sciences</h3>
+                    <p>Qualitative & Quantitative Analysis, Sociology, Psychology, & Policy Research.</p>
+                </div>
+                
+                <div class="expertise-card">
+                    <i class="icon fa-solid fa-gears"></i>
+                    <h3>Engineering</h3>
+                    <p>Civil, Mechanical, Electrical, & Chemical Engineering simulations and projects.</p>
+                </div>
+
+                <div class="expertise-card">
+                    <i class="icon fa-solid fa-industry"></i>
+                    <h3>Industrial Tech</h3>
+                    <p>Process Optimization, Supply Chain Management, & Systems Engineering.</p>
+                </div>
+                
+                <div class="expertise-card">
+                    <i class="icon fa-solid fa-code"></i>
+                    <h3>Computer Science</h3>
+                    <p>Machine Learning, AI, Data Structures, Algorithms, & Software Development.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2>Get in Touch</h2>
+            
+            <div class="contact-form">
+                <p>Let's discuss how our team can support your research. Fill out the form below for a consultation.</p>
+                
+                <form action="https://formspree.io/f/YOUR_FORMSPREE_ENDPOINT" method="POST">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="institution">University / Institution</label>
+                        <input type="text" id="institution" name="institution">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="service">Service Interested In</label>
+                        <select id="service" name="service">
+                            <option value="general">General Inquiry</option>
+                            <option value="sop">Experiment SOPs</option>
+                            <option value="reports">Reports or Analysis</option>
+                            <option value="synopsis-thesis">Synopsis or Thesis</option>
+                            <option value="publication">Paper Publication</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Your Message</label>
+                        <textarea id="message" name="message" placeholder="Please describe your research area and specific needs..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn" style="width: 100%;">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2025 Scholar Aid. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
